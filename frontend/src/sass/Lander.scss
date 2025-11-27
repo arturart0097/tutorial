@@ -1,0 +1,25 @@
+@use "stylelib/core" as *;
+
+.lander-wrapper {
+  @include responsive-lr-padding(1200px, 50px);
+
+  background-image: url("../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  // min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 10px;
+    rect {
+      cursor: pointer;
+    }
+  }
+}

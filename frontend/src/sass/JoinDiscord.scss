@@ -1,0 +1,27 @@
+.subtitle {
+  font-family: "Tachyon W00 Light";
+  //   font-size: 46.5px;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text-secondary);
+
+  li {
+    &::marker {
+      color: var(--accent-blue);
+    }
+  }
+}
+
+.discord-btn {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.discord-logo {
+  width: 37px;
+}

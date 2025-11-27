@@ -1,0 +1,39 @@
+.enhance-prompt-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-container {
+    width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    display: flex;
+  }
+}
+
+.input-field {
+  padding: 1rem;
+  min-height: 200px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--input-text);
+  transition: border-color 0.2s ease;
+  border-radius: 8px;
+  background: var(--bg-tertiary);
+  outline: none;
+  border: none;
+  font-family: "Bicyclette";
+  resize: vertical;
+  // &:focus {
+  //   outline: none;
+  //   border-color: pink;
+  //   box-shadow: 0 0 0 2px rgba(pink, 0.2);
+  // }
+}

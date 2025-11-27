@@ -1,0 +1,34 @@
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@mixin slideFromLeft {
+  animation: 1s ease-out 0s 1 slideFromLeft;
+}
+
+@mixin slideFromRight {
+  animation: 1s ease-out 0s 1 slideFromRight;
+}

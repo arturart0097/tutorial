@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "Tachyon W00 Regular";
+  src: url("https://db.onlinewebfonts.com/t/0021e0dd7bb3205b038c4f17aacff6cc.eot");
+  src:
+    url("https://db.onlinewebfonts.com/t/0021e0dd7bb3205b038c4f17aacff6cc.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/0021e0dd7bb3205b038c4f17aacff6cc.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/0021e0dd7bb3205b038c4f17aacff6cc.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/0021e0dd7bb3205b038c4f17aacff6cc.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/0021e0dd7bb3205b038c4f17aacff6cc.svg#Tachyon W00 Regular")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Tachyon W00 Light";
+  src: url("https://db.onlinewebfonts.com/t/adae36e9078d4f4051d17d1f52599f73.eot");
+  src:
+    url("https://db.onlinewebfonts.com/t/adae36e9078d4f4051d17d1f52599f73.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/adae36e9078d4f4051d17d1f52599f73.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/adae36e9078d4f4051d17d1f52599f73.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/adae36e9078d4f4051d17d1f52599f73.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/adae36e9078d4f4051d17d1f52599f73.svg#Tachyon W00 Light")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Tachyon W00 Thin";
+  src: url("https://db.onlinewebfonts.com/t/816adbdbfd302211040ddda9429dd2f6.eot");
+  src:
+    url("https://db.onlinewebfonts.com/t/816adbdbfd302211040ddda9429dd2f6.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/816adbdbfd302211040ddda9429dd2f6.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/816adbdbfd302211040ddda9429dd2f6.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/816adbdbfd302211040ddda9429dd2f6.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/816adbdbfd302211040ddda9429dd2f6.svg#Tachyon W00 Thin")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Bicyclette";
+  src: url("https://db.onlinewebfonts.com/t/88ff0de7c5c83889f93c010f605a0ca6.eot");
+  src:
+    url("https://db.onlinewebfonts.com/t/88ff0de7c5c83889f93c010f605a0ca6.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/88ff0de7c5c83889f93c010f605a0ca6.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/88ff0de7c5c83889f93c010f605a0ca6.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/88ff0de7c5c83889f93c010f605a0ca6.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/88ff0de7c5c83889f93c010f605a0ca6.svg#Bicyclette")
+      format("svg");
+}
+
+@mixin header-font-family {
+  font-family: "Tachyon W00 Light";
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin paragraph-font-family {
+  font-family: "Bicyclette";
+  font-style: normal;
+  font-weight: 400;
+}

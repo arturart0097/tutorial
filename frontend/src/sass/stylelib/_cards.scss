@@ -1,0 +1,25 @@
+@mixin cards($max-card-width, $num-cards, $gap) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(#{$max-card-width}, 1fr));
+  gap: #{$gap};
+}
+
+@mixin cards-total-width($max-total-width, $num-cards, $gap) {
+  @include cards(
+    calc((#{$max-total-width} - (#{$num-cards} - 1) * #{$gap}) / #{$num-cards}),
+    $num-cards,
+    $gap
+  );
+}
+
+@mixin vertical-image-card($image-container, $width, $gap) {
+  display: flex;
+  flex-direction: column;
+  gap: #{$gap};
+  max-width: #{$width};
+  .#{$image-container} {
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "fonts.scss" as *;
+.annoucement-card {
+  flex-basis: 100%;
+  background-image: url("../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 16px;
+  padding: 2rem;
+  gap: 5rem;
+  display: flex;
+  flex-direction: column;
+  @include paragraph-font-family();
+
+  font-size: 16pt;
+  // h1 {
+  //   font-size: 64px;
+  // }
+  a {
+    margin-top: auto;
+    width: max-content;
+  }
+}

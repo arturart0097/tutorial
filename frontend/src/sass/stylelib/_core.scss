@@ -1,0 +1,105 @@
+@use "sass:math";
+
+@mixin responsive-lr-padding($content-width, $min-padding) {
+  padding-left: max(#{$min-padding}, calc((100% - #{$content-width}) / 2));
+  padding-right: max(#{$min-padding}, calc((100% - #{$content-width}) / 2));
+  @media screen and (max-width: 450px) {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+@mixin responsive-lr-margin($content-width, $min-margin) {
+  margin: 0 max(#{$min-margin}, calc((100% - #{$content-width}) / 2)) 0
+    max(#{$min-margin}, calc((100% - #{$content-width}) / 2));
+  @media screen and (max-width: 450px) {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+
+@mixin left-profile($min-text-width, $gap) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: #{$gap};
+
+  & > :nth-child(1) {
+    margin: 0 auto 0 auto;
+  }
+
+  & > :nth-child(2) {
+    flex-basis: #{$min-text-width};
+    flex-grow: 1;
+  }
+}
+
+@mixin right-profile($min-text-width, $gap) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  gap: #{$gap};
+
+  & > :nth-child(2) {
+    margin: 0 auto 0 auto;
+  }
+
+  & > :nth-child(1) {
+    margin: 0 auto 0 auto;
+    flex-basis: #{$min-text-width};
+    flex-grow: 1;
+  }
+}
+
+@mixin linear-font-size-clamp(
+  $min_viewport_width,
+  $max_viewport_width,
+  $min_font_size,
+  $max_font_size
+) {
+  $slope: math.div(
+    ($max_font_size - $min_font_size),
+    ($max_viewport_width - $min_viewport_width)
+  );
+
+  font-size: clamp(
+    $min_font_size,
+    $slope * 100vw - $slope * $min_viewport_width + $min_font_size,
+    $max_font_size
+  );
+}
+
+@mixin linear-padding-clamp(
+  $min_viewport_width,
+  $max_viewport_width,
+  $min_padding,
+  $max_padding
+) {
+  $slope: math.div(
+    ($max_padding - $min_padding),
+    ($max_viewport_width - $min_viewport_width)
+  );
+
+  padding: clamp(
+    $min_padding,
+    $slope * 100vw - $slope * $min_viewport_width + $min_padding,
+    $max_padding
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.topper {
+  font-weight: bold;
+  text-transform: uppercase;
+}

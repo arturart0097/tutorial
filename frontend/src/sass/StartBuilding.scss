@@ -1,0 +1,55 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(422px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  color: var(--text-primary);
+  gap: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--form-border);
+  background: var(--form-bg);
+  padding: 1rem;
+
+  .card-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    img {
+      max-width: 56px;
+    }
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    .card-title {
+      font-family: "Tachyon W00 Regular";
+      font-size: 14pt;
+      font-style: normal;
+      // line-height: 48px; /* 103.226% */
+      color: var(--text-primary);
+    }
+
+    .card-description {
+      color: var(--text-primary);
+      font-family: "Tachyon W00 Thin";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px; /* 128.571% */
+    }
+    .card-socials {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      .card-social-icon {
+        width: 26px;
+      }
+    }
+  }
+}

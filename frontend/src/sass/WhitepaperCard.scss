@@ -1,0 +1,12 @@
+.whitepaper-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+  height: 100%;
+  font-family: "Bicyclette";
+  font-size: 16pt;
+  .cta-wrap {
+    margin-top: auto;
+  }
+}

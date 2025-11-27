@@ -1,0 +1,14 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4.66667 2H2.66667C2.29848 2 2 2.29848 2 2.66667V4.66667C2 5.03486 2.29848 5.33333 2.66667 5.33333H4.66667C5.03486 5.33333 5.33333 5.03486 5.33333 4.66667V2.66667C5.33333 2.29848 5.03486 2 4.66667 2Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13.3333 2H11.3333C10.9651 2 10.6667 2.29848 10.6667 2.66667V4.66667C10.6667 5.03486 10.9651 5.33333 11.3333 5.33333H13.3333C13.7015 5.33333 14 5.03486 14 4.66667V2.66667C14 2.29848 13.7015 2 13.3333 2Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4.66667 10.6667H2.66667C2.29848 10.6667 2 10.9651 2 11.3333V13.3333C2 13.7015 2.29848 14 2.66667 14H4.66667C5.03486 14 5.33333 13.7015 5.33333 13.3333V11.3333C5.33333 10.9651 5.03486 10.6667 4.66667 10.6667Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 10.6667H12C11.6464 10.6667 11.3072 10.8071 11.0572 11.0572C10.8071 11.3072 10.6667 11.6464 10.6667 12V14" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 14V14.0067" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M7.99999 4.66667V6.66667C7.99999 7.02029 7.85951 7.35943 7.60947 7.60948C7.35942 7.85953 7.02028 8.00001 6.66666 8.00001H4.66666" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 8H2.00667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8 2H8.00667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8 10.6667V10.6733" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.6667 8H11.3333" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 8V8.00667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8 14V13.3333" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

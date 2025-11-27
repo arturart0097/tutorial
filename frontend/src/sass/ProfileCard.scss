@@ -1,0 +1,122 @@
+.profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  .profile-user {
+    font-family: "Tachyon W00 Regular";
+
+    display: flex;
+    gap: 1rem;
+
+    .profile-card-icon {
+      border-radius: 20px;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+  }
+
+  .profile-card-icon {
+    max-width: 40px;
+  }
+
+  .status-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+.status-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  border-radius: 12px;
+  flex-basis: 100%;
+  &.red {
+    border: 1px solid var(--status-border-red);
+    background: var(--status-bg-red);
+  }
+
+  &.blue {
+    border: 1px solid var(--status-border-blue);
+    background: var(--status-bg-blue);
+  }
+  padding: 1rem;
+  .icon {
+    width: 47px;
+  }
+
+  .body {
+    font-family: "Tachyon W00 Regular";
+  }
+}
+
+.tag {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--text-tertiary);
+  text-align: center;
+  font-family: "Tachyon W00 Light";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+
+  // Default border
+  border: 1px solid var(--border-secondary);
+
+  .tag-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+
+    &.gray {
+      background-color: var(--text-tertiary);
+    }
+
+    &.violet {
+      background-color: var(--accent-violet);
+    }
+  }
+
+  &.violet {
+    border: none; // border handled by pseudo element
+
+    // Wrapper gradient border
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(
+        60deg,
+        #f094fa 13.4%,
+        #f5576e 50%,
+        #a957ae 68.3%,
+        #8456cf 77.45%,
+        #5e56ef 86.6%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    // Inner block creates the “solid background” so the border stays separate
+    position: relative;
+    z-index: 1;
+  }
+}

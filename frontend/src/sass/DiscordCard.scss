@@ -1,0 +1,22 @@
+.discord-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  gap: 2rem;
+  justify-content: flex-start;
+  font-family: "Bicyclette";
+  font-size: 16pt;
+
+  .cta-wrap {
+    margin-top: auto;
+    .cta {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: auto;
+    }
+  }
+}

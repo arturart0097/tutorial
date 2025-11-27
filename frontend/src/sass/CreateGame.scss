@@ -1,0 +1,200 @@
+.form {
+}
+
+.create-form {
+  border-radius: 12px;
+  border: 1px solid var(--form-border);
+  background: var(--form-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 1rem;
+  max-width: 650px;
+
+  .create-form-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .create-form-btns {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+    }
+  }
+}
+.action-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+@mixin action-card($color) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5rem;
+  border-radius: 12px;
+  border: 1px solid $color;
+  background: var(--form-bg);
+  padding: 2rem;
+  max-width: 300px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 0px $color;
+  }
+
+  .action-card-img-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-tertiary);
+    border-radius: 110px;
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    .action-card-img {
+      width: 100px;
+    }
+  }
+
+  .action-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    .action-card-title {
+      color: $color;
+    }
+
+    .action-card-description {
+      text-align: center;
+      font-family: "Tachyon W00 Light";
+      //   font-size: 46.5px;
+      font-style: normal;
+      font-weight: 400;
+      // line-height: 48px; /* 103.226% */
+      color: var(--text-secondary);
+    }
+  }
+}
+
+.action-card-red {
+  @include action-card(var(--accent-red));
+}
+
+.action-card-blue {
+  @include action-card(var(--accent-blue));
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10rem;
+  position: relative;
+  .progress-path {
+    width: calc(5rem + 45%);
+    background-color: var(--progress-inactive);
+    position: absolute;
+    top: 15px;
+    left: 135px;
+    height: 5px;
+    &.active {
+      background-color: var(--accent-red);
+    }
+  }
+
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .progress-step-number {
+      font-family: "Tachyon W00 Regular";
+      font-style: normal;
+      font-weight: 400;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background-color: var(--progress-inactive);
+      border-radius: 30px;
+      height: 34px;
+      width: 34px;
+      &.active {
+        background-color: var(--accent-red);
+      }
+    }
+  }
+}
+
+input[type="text"] {
+  border-radius: 12px;
+  // border: 1px solid var(--accent-blue);
+  background: var(--input-bg);
+  // &::placeholder {
+  //   color: var(--accent-blue);
+  // }
+  color: var(--input-text);
+  padding: 0.5rem;
+  font-size: 14pt;
+  font-family: "Tachyon W00 Regular";
+  outline: none;
+}
+
+.theme-field,
+.theme-select,
+.theme-textarea {
+  border-radius: 12px;
+  border: 1px solid var(--border-secondary);
+  background: var(--input-bg);
+  color: var(--input-text);
+  padding: 0.75rem 1rem;
+  font-size: 14pt;
+  font-family: "Tachyon W00 Regular";
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(47, 92, 252, 0.2);
+  }
+}
+
+.theme-select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.2rem) calc(50% - 2px),
+    calc(100% - 0.6rem) calc(50% - 2px);
+  background-size: 0.5rem 0.5rem, 0.5rem 0.5rem;
+  background-repeat: no-repeat;
+}
+
+.theme-textarea {
+  min-height: 200px;
+  resize: vertical;
+  line-height: 1.4;
+}
