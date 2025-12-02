@@ -11,7 +11,7 @@ import { Rating } from "../Rating";
 function CardRow({ children, className = "" }) {
   return (
     <div
-      className={`card-row grid w-full gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-start ${className}`}
+      className={`card-row grid w-full gap-6 grid-cols-1 md:grid-cols-2 items-start ${className}`}
     >
       {children}
     </div>
@@ -21,7 +21,7 @@ function CardRow({ children, className = "" }) {
 function DiscordCard() {
   return (
     <DashboardCard>
-      <div className="discord-card !min-h-[350px]">
+      <div className="discord-card !min-h-[300px]">
         <h1>Discord</h1>
         <div>Talk with other GameGPT users in Discord</div>
         <div className="cta-wrap">
@@ -45,7 +45,7 @@ function WhitepaperCard() {
           game with GameGPT
         </div>
         <div className="cta-wrap">
-          <button className="btn-full white-btn cta" disabled>
+          <button className="btn-full white-btn cta h-[61px]" disabled>
             <i className="fa-solid fa-book"></i> &nbsp; Read
           </button>
         </div>
@@ -58,7 +58,7 @@ function IntroVideoCard() {
   const { openIntro } = useTutorial();
   return (
     <DashboardCard>
-      <div className="intro-video-card !min-h-[300px]">
+      <div className="intro-video-card !min-h-[311px]">
         <h1>Tutorial</h1>
         <div>Take a quick game creation tour</div>
         <div>
@@ -74,7 +74,7 @@ function IntroVideoCard() {
             allowFullScreen
           ></iframe> */}
         </div>
-        <button className="btn-full white-black-btn" disabled>
+        <button className="btn-full white-black-btn h-[61px]" disabled>
           Start tutorial
         </button>
       </div>
@@ -86,16 +86,10 @@ export default function Preview() {
   return (
     <div>
       <ProfileCard />
-      <CardRow className="grid-cols-1 md:grid-cols-2">
-        <div className="w-[70%]">
-          <DiscordCard />
-        </div>
-        <div className="w-[70%]">
-          <WhitepaperCard />
-        </div>
-        <div className="w-[70%]">
-          <IntroVideoCard />
-        </div>
+      <CardRow>
+        <DiscordCard />
+        <WhitepaperCard />
+        <IntroVideoCard />
         <AnnoucementCard />
       </CardRow>
       <br />

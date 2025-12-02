@@ -7,7 +7,7 @@ import profile_icon from "../assets/profile.png";
 import { useEffect, useState } from "react";
 import { usePrivy, useLogout } from "@privy-io/react-auth";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate, useParams } from "react-router";
 import { FeedbackButton } from "./Feedback";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTutorial } from "../hooks/useTutorial";
@@ -119,6 +119,14 @@ export default function NewSidebar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
   const isLightTheme = theme === "light";
+  const { pathname } = useLocation();
+
+  const isCreate = pathname.includes("/dashboard/create");
+  const isGames = pathname.includes("/dashboard/games");
+
+  const disableDashboardLink = isCreate || isGames;
+
+  console.log(disableDashboardLink, "---1");
 
   useEffect(() => {
     if (!user) return;
@@ -252,7 +260,7 @@ export default function NewSidebar() {
                     className="py-1"
                   >
                     <SidebarLink
-                      to="/dashboard"
+                      to={disableDashboardLink ? "" : "/dashboard"}
                       label="Dashboard"
                       variant="minimal"
                       textSize={28}
@@ -391,7 +399,10 @@ export default function NewSidebar() {
               className={`flex flex-col gap-1 mx-2! border-b-2 pb-8! ${fadeIn} delay-50 ${pop}`}
               style={{ borderColor: "var(--border-primary)" }}
             >
-              <SidebarLink to="/dashboard" label="Dashboard" />
+              <SidebarLink
+                to={disableDashboardLink ? "" : "/dashboard"}
+                label="Dashboard"
+              />
               <SidebarLink
                 to="/dashboard/games"
                 label="My Games"

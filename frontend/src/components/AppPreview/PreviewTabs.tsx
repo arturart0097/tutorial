@@ -1,8 +1,11 @@
+import { useGettingStartedSteps } from "../../contexts/GettingStartedStepsContext";
+
 interface PreviewTabProps {
   label: string;
   index: number;
   activeTab: number;
   setActiveTab: (index: number) => void;
+  step?: boolean;
 }
 
 const PreviewTab = ({
@@ -10,12 +13,18 @@ const PreviewTab = ({
   index,
   activeTab,
   setActiveTab,
+  step,
 }: PreviewTabProps) => {
   const isActive = activeTab === index;
+  const { step: stepTutorial, setStep } = useGettingStartedSteps();
+
   return (
     <button
       type="button"
-      onClick={() => setActiveTab(index)}
+      onClick={() => {
+        setActiveTab(index);
+        stepTutorial === 6 ? "" : step && setStep(5);
+      }}
       className={`preview-tab ${isActive ? "active" : ""}`}
       aria-pressed={isActive}
     >
@@ -43,6 +52,7 @@ export default function TabRow({ activeTab, setActiveTab }: TabRowProps) {
         index={2}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        step
       />
       <PreviewTab
         label="Assets"

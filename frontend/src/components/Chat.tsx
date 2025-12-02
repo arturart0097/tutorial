@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useGameBuilder } from "../contexts/GameBuilderContext";
 import { lightGradient, hoverGradient } from "./Buttons";
 import { useNavigate } from "react-router";
+import { useGettingStartedSteps } from "../contexts/GettingStartedStepsContext";
 
 const EXAMPLE_MESSAGES = [
   {
@@ -78,28 +79,104 @@ interface ChatBoxProps {
 
 export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
   const { iterateGameStream, saveGame, chatLock } = useGameBuilder();
+  const [chatInteracted, setChatInteracted] = useState(false);
+  const targetChatText = "Change background color";
   const [message, setMessage] = useState<string>("");
   const focusStyle =
     "focus:ring-2! focus:ring-fuchsia-300/40! focus:border-transparent!";
   const navigate = useNavigate();
+  const { setStep, setRegenerate } = useGettingStartedSteps();
+  // Кнопка Send активується тільки коли повністю введено "Change background color" (без урахування регістру)
+  const isChatComplete =
+    message.trim().toLowerCase() === targetChatText.toLowerCase();
 
   const handleSend = async () => {
-    const text = message.trim();
-    if (!text) return;
-    await iterateGameStream(text);
-    invalidateMessages(gameId);
-    setMessage("");
+    if (!isChatComplete) return;
+    setStep(6);
+    setRegenerate(true);
   };
 
   return (
     <div className="flex items-end gap-3 w-full h-28">
       <textarea
         className={`w-full h-full ${focusStyle} border border-zinc-600 font-mono! bg-slate-800/60 rounded-lg px-3! pt-3! text-sm! leading-6 text-zinc-300! placeholder:text-zinc-500! resize-none overflow-auto!`}
-        placeholder="Add to the game..."
+        placeholder=""
         rows={4}
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onFocus={() => {
+          setChatInteracted(true);
+        }}
+        onKeyDown={(e) => {
+          const currentIndex = message.length;
+          const nextChar = targetChatText[currentIndex];
+
+          // Allow backspace
+          if (e.key === "Backspace") {
+            setMessage((prev) => prev.slice(0, -1));
+            return;
+          }
+
+          // Allow delete
+          if (e.key === "Delete") {
+            return;
+          }
+
+          // Allow arrow keys and other navigation
+          if (
+            e.key.startsWith("Arrow") ||
+            e.key === "Home" ||
+            e.key === "End"
+          ) {
+            return;
+          }
+
+          // Prevent default for other keys if we've reached the end
+          if (currentIndex >= targetChatText.length) {
+            e.preventDefault();
+            return;
+          }
+
+          // Check if the pressed key matches the next character
+          if (e.key.length === 1) {
+            const isCorrect = e.key.toLowerCase() === nextChar.toLowerCase();
+
+            if (isCorrect) {
+              const newInput = message + e.key;
+              setMessage(newInput);
+            } else {
+              // Prevent incorrect character from being entered
+              e.preventDefault();
+            }
+          }
+        }}
+        onChange={() => {
+          // This is handled in onKeyDown, but keeping for safety
+          setChatInteracted(true);
+        }}
       />
+      <div className="pointer-events-none absolute inset-x-0 bottom-23 !px-6">
+        <div className="w-full h-full whitespace-pre-wrap break-words overflow-hidden text-sm leading-6 font-mono text-zinc-500/70">
+          {targetChatText.split("").map((char, index) => {
+            const isTyped = index < message.length;
+            const isCorrect =
+              isTyped && message[index].toLowerCase() === char.toLowerCase();
+            return (
+              <span
+                key={index}
+                className={
+                  isTyped
+                    ? isCorrect
+                      ? "text-transparent"
+                      : "text-red-400/60"
+                    : "text-gray-400/50"
+                }
+              >
+                {char}
+              </span>
+            );
+          })}
+        </div>
+      </div>
 
       <div className="flex flex-col gap-4 mt-2! w-25 h-full mr-1! text-sm rounded-lg">
         <ThemeButton
@@ -108,6 +185,7 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
           radius="rounded-lg!"
           padding="py-2! px-4!"
           onClick={handleSend}
+          disabled={!isChatComplete}
         >
           Send
         </ThemeButton>

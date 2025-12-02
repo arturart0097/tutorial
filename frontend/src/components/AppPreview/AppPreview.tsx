@@ -7,16 +7,19 @@ import TabRow from "./PreviewTabs";
 import { ChatBoxFloat } from "../Chat";
 import { useTutorial } from "../../hooks/useTutorial";
 
-function AppPreview({ generate }) {
+interface AppPreviewProps {
+  generate: boolean;
+  codeAnimationKey: number;
+}
+
+function AppPreview({ generate, codeAnimationKey }: AppPreviewProps) {
   const [activeTab, setActiveTab] = useState<number>(1);
   const { gameCode, setGameCode, createGameStream, gameId } = useGameBuilder();
-
   const { tutorial, step } = useTutorial();
-
-  console.log(generate)
 
   const reactiveStyle =
     "w-full! md:w-full! max-w-full! md:max-w-180! pl-3! py-1!";
+
 
   return (
     <>
@@ -84,25 +87,36 @@ function AppPreview({ generate }) {
 
         <TabRow activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        {activeTab === 2 ? (
-          <GamePreview generate={generate} />
-        ) : activeTab == 1 ? (
-          <div className="flex flex-col items-center w-full gap-3 mt-3!">
-            <EditorPane generate={generate} gameCode={gameCode} setGameCode={setGameCode} />
+        {/* Always keep panes mounted so editor animation doesn't restart on tab switch */}
+        <div
+          className={`${
+            activeTab === 1 ? "flex" : "hidden"
+          } flex-col items-center w-full gap-3 mt-3!`}
+        >
+          <EditorPane
+            animationKey={codeAnimationKey}
+            gameCode={gameCode}
+            setGameCode={setGameCode}
+          />
 
-            <div className="flex w-full justify-start gap-2">
-              <DownloadButton gameCode={gameCode} />
-              <RefreshButton
-                createGameStream={createGameStream}
-                gameCode={gameCode}
-              />
-            </div>
-
-            <ChatBoxFloat gameId={gameId} setGameCode={setGameCode} />
+          <div className="flex w-full justify-start gap-2">
+            <DownloadButton gameCode={gameCode} />
+            <RefreshButton
+              createGameStream={createGameStream}
+              gameCode={gameCode}
+            />
           </div>
-        ) : activeTab == 3 ? (
+
+          <ChatBoxFloat gameId={gameId} setGameCode={setGameCode} />
+        </div>
+
+        <div className={activeTab === 2 ? "block w-full" : "hidden w-full"}>
+          <GamePreview generate={generate} />
+        </div>
+
+        <div className={activeTab === 3 ? "block w-full" : "hidden w-full"}>
           <AssetsTab />
-        ) : null}
+        </div>
       </div>
     </>
   );

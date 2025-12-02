@@ -5,6 +5,15 @@ module.exports = {
         "brand-gradient":
           "linear-gradient(90deg, #fe4056 0%, #ec7694 48.56%, rgba(47, 92, 252, 0.34) 100%)",
       },
+      keyframes: {
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        shimmer: "shimmer 2s infinite",
+      },
     },
   },
 };

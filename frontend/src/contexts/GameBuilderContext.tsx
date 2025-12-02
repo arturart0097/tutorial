@@ -86,6 +86,7 @@ type GameBuilderContext = {
   savePreview: () => Promise<void>;
   setUserWallet: (wallet: string) => void;
   initialize: (id?: number) => Promise<void>;
+  showCodegenTooltip: () => void;
 };
 
 const GameBuilder = createContext<GameBuilderContext>({
@@ -142,6 +143,7 @@ const GameBuilder = createContext<GameBuilderContext>({
   saveAssets: () => Promise.resolve(),
   saveThumbnail: () => Promise.resolve(),
   savePreview: () => Promise.resolve(),
+  showCodegenTooltip: () => {},
 });
 
 export const GameBuilderContextProvider: React.FC<{
@@ -370,6 +372,22 @@ export const GameBuilderContextProvider: React.FC<{
     }
   };
 
+  const showCodegenTooltip = () => {
+    // Show a 15s loading toast that automatically turns into success
+    toast.loading("Generating Game Code...", {
+      id: "codegen-tooltip",
+      duration: 15000,
+    });
+
+    if (typeof window !== "undefined") {
+      window.setTimeout(() => {
+        toast.success("Game code generated!", {
+          id: "codegen-tooltip",
+        });
+      }, 15000);
+    }
+  };
+
   const enhanceGamePrompt = async (newPrompt: string) => {
     if (!verifyEligibility()) return;
     if (!newPrompt || newPrompt.trim() === "") return;
@@ -531,6 +549,7 @@ export const GameBuilderContextProvider: React.FC<{
         saveAssets,
         saveThumbnail,
         savePreview,
+        showCodegenTooltip,
       }}
     >
       {children}

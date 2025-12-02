@@ -48,7 +48,6 @@ const StepNav = ({ step, setStep }: NavProps) => {
         <ThemeButton
           hover="hover:cursor-default"
           padding="py-2! px-4!"
-          onClick={() => Navigate(-1)}
         >
           &lt;
         </ThemeButton>
@@ -65,12 +64,6 @@ const StepNav = ({ step, setStep }: NavProps) => {
         <ThemeButton
           hover="null"
           padding="py-2! px-4!"
-          onClick={() => {
-            Navigate(1);
-            if (shouldGuideNext) {
-              advanceStep();
-            }
-          }}
         >
           &gt;
         </ThemeButton>
@@ -79,12 +72,12 @@ const StepNav = ({ step, setStep }: NavProps) => {
   );
 };
 
-export default function Steps({ onGenerateGame }) {
+export default function Steps({ onGenerateGame, generate }: { onGenerateGame: () => void, generate: boolean }) {
   const [step, setStep] = useState<number>(1);
   return (
     <div className="flex relative flex-col w-full h-[90vh] justify-between [font-family:'Tachyon_W00_Light'] overflow-y-auto!">
       <StepOne step={step} setStep={setStep} />
-      <StepTwo step={step} onGenerateGame={onGenerateGame} />
+      <StepTwo step={step} onGenerateGame={onGenerateGame} generate={generate} />
       <StepThree step={step} />
       <StepFour step={step} />
       <StepNav step={step} setStep={setStep} />

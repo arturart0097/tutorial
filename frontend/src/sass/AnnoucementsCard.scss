@@ -1,11 +1,11 @@
 @use "fonts.scss" as *;
 .annoucement-card {
-  flex-basis: 100%;
+  flex-basis: 40%;
   background-image: url("../assets/background.png");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 16px;
-  padding: 2rem;
+  padding: 0.5rem;
   gap: 5rem;
   display: flex;
   flex-direction: column;

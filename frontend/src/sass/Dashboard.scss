@@ -219,11 +219,12 @@ select {
   .main {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     width: 100%;
     // padding: 1rem;
     .dashboard-card {
       flex-basis: 100%;
-      padding: 2rem;
+      padding: 0.5rem;
       border-radius: 16px;
       border: 1px solid var(--border-card);
       background: var(--bg-card);
@@ -236,9 +237,9 @@ select {
       // width: max-content;
     }
     .card-row {
-      display: flex;
+      // display: flex;
       flex-direction: row;
-      gap: 1rem;
+      // gap: 1rem;
       width: 100%;
     }
   }

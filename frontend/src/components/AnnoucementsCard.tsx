@@ -2,7 +2,7 @@ import "../sass/AnnoucementsCard.scss";
 
 export function AnnoucementCard() {
   return (
-    <div className="annoucement-card !min-h-[361px]">
+    <div className="annoucement-card !min-h-[300px]">
       <div className="text-white">
         <h1 className="!text-white">Announcement</h1>
         <div>

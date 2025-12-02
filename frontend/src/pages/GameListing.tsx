@@ -4,6 +4,7 @@ import { useGameBuilder } from "../contexts/GameBuilderContext";
 import { useNavigate } from "react-router";
 import { deleteProject } from "../lib/apiClient";
 import { useTutorial } from "../hooks/useTutorial";
+import { useGettingStartedSteps } from "../contexts/GettingStartedStepsContext";
 
 function GameCard({ title, description, thumbnailUrl, id }) {
   const navigate = useNavigate();
@@ -69,10 +70,14 @@ function GameCard({ title, description, thumbnailUrl, id }) {
 function GameListing() {
   const [projects, setProjects] = useState<Project[]>([]);
   const { tutorial, step, advanceStep, skipTutorial } = useTutorial();
+  const { setStep } = useGettingStartedSteps();
   const [showCongrats, setShowCongrats] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     return window.localStorage.getItem("onboardingCongrats") === "1";
   });
+  const { step: gettingStartedStep, setStep: setGettingStartedStep } =
+    useGettingStartedSteps();
+  const navigate = useNavigate();
   const IMAGE_ENDPOINT = import.meta.env.VITE_IMAGE_ENDPOINT;
 
   const highlight = (!tutorial && step === 2) || step === 3;
@@ -108,6 +113,7 @@ function GameListing() {
     }
   }, [skipTutorial]);
 
+  console.log(gettingStartedStep);
   return (
     <div className="flex w-full p-3! h-full min-h-screen flex-col bg-blue-800/10 [font-family:'Tachyon_W00_Light'] ">
       {showCongrats && (
@@ -200,10 +206,9 @@ function GameListing() {
                   : ""
               }`}
               onClick={() => {
-                // navigate after advancing step to ensure Dashboard sees step 3 immediately
-                window.requestAnimationFrame(() => {
-                  window.location.assign("/dashboard/create");
-                });
+                // Перемикаємо локальний майстер GettingStarted на крок 2
+                setGettingStartedStep(2);
+                navigate("/dashboard/create");
               }}
             >
               <i className="fa-solid fa-plus"></i> &nbsp; New Game

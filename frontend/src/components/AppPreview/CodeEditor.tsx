@@ -2,9 +2,11 @@ import Editor, { loader } from "@monaco-editor/react";
 import GITHUB_DARK_THEME from "../../misc/MonacoGithubDarkTheme";
 import GITHUB_LIGHT_THEME from "../../misc/MonacoGithubLightTheme";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
-import { defaultCode } from "./GamePreview";
+import { DEFAULT_CODE } from "../../assets/MOCK/codeMock";
+import { REGENERATE_CODE } from "../../assets/MOCK/codeMock";
+import { useGettingStartedSteps } from "../../contexts/GettingStartedStepsContext";
 
 function downloadFile(filename: string, text: string) {
   const element = document.createElement("a");
@@ -71,13 +73,18 @@ export function normalizeCodeBlock(input: string) {
 export function EditorPane({
   gameCode,
   setGameCode,
-  generate,
+  animationKey,
 }: {
   gameCode: string;
   setGameCode: (code: string) => void;
-  generate?: boolean;
+  animationKey: number;
 }) {
   const { theme } = useTheme();
+  const typingFrame = useRef<number | null>(null);
+  const typingLength = useRef<number>(0);
+  const isTyping = useRef<boolean>(false);
+  const { regenerate } = useGettingStartedSteps();
+
   useEffect(() => {
     loader.init().then((monaco) => {
       const palette =
@@ -90,6 +97,50 @@ export function EditorPane({
     });
   }, [theme]);
 
+  useEffect(() => {
+    if (!animationKey) {
+      return;
+    }
+
+    if (typingFrame.current) {
+      cancelAnimationFrame(typingFrame.current);
+    }
+
+    const codeToType = regenerate ? REGENERATE_CODE : DEFAULT_CODE;
+    const duration = 15000; // 5 seconds animation
+    const start = performance.now();
+    typingLength.current = 0;
+    isTyping.current = true;
+    setGameCode("");
+
+    const animate = (timestamp: number) => {
+      const elapsed = timestamp - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const nextLength = Math.floor(progress * codeToType.length);
+
+      if (nextLength !== typingLength.current) {
+        typingLength.current = nextLength;
+        setGameCode(codeToType.slice(0, nextLength));
+      }
+
+      if (progress < 1 && isTyping.current) {
+        typingFrame.current = requestAnimationFrame(animate);
+      } else {
+        setGameCode(codeToType);
+        isTyping.current = false;
+      }
+    };
+
+    typingFrame.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (typingFrame.current) {
+        cancelAnimationFrame(typingFrame.current);
+      }
+      isTyping.current = false;
+    };
+  }, [animationKey, setGameCode, regenerate]);
+
   return (
     <div className="flex overflow-auto w-full resize-y rounded-xl h-[60vh]">
       <Editor
@@ -101,7 +152,7 @@ export function EditorPane({
           padding: { top: 20, bottom: 20 },
           fontSize: 10,
         }}
-        value={generate && defaultCode}
+        value={gameCode}
       />
     </div>
   );

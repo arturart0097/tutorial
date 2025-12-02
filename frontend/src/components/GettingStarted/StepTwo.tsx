@@ -4,6 +4,7 @@ import type { StepProps } from "./StepOne";
 import { useTutorial } from "../../hooks/useTutorial";
 import { useNavigate } from "react-router";
 import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
+import { useGettingStartedSteps } from "../../contexts/GettingStartedStepsContext";
 
 const defaultPrompt = `Of course. Here is the enhanced game prompt for "Tic Tac Toe," transforming the user's simple request into a comprehensive and structured format suitable for the Vibe platform's game generation model.
 
@@ -93,7 +94,7 @@ window.ASSETS = {
 *   **Responsiveness:** The canvas should be dynamically sized to fit the browser window while maintaining a 1:1 aspect ratio. It should be centered both horizontally and vertically. This is critical for a good mobile experience.
 *   **Self-Contained:** The entire game (HTML, CSS, and JavaScript) should be contained within a single HTML file. No external dependencies are allowed.`;
 
-export default function StepTwo({ step, onGenerateGame }: StepProps) {
+export default function StepTwo({ step, onGenerateGame, generate }: StepProps) {
   const gb = useGameBuilder();
   const [localPrompt, setLocalPrompt] = useState<string>(gb.currentGamePrompt);
   const [isTypingPrompt, setIsTypingPrompt] = useState(false);
@@ -109,6 +110,8 @@ export default function StepTwo({ step, onGenerateGame }: StepProps) {
     if (typeof window === "undefined") return false;
     return window.localStorage.getItem("tutorialStep4Advanced") === "true";
   });
+
+  const { setStep } = useGettingStartedSteps();
 
   const navigate = useNavigate();
 
@@ -148,8 +151,7 @@ export default function StepTwo({ step, onGenerateGame }: StepProps) {
   }, [tutorial, tutorialStep, advanceStep]);
 
   const ButtonClick = () => {
-    // gb.createGameStream().then(() => {});
-    onGenerateGame(true);
+    onGenerateGame?.();
     if (typeof window !== "undefined") {
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
       if (isMobile) {
@@ -305,6 +307,7 @@ export default function StepTwo({ step, onGenerateGame }: StepProps) {
                 //   }
                 // }
                 ButtonClick();
+                setStep(4);
               }}
               type="button"
             >
@@ -317,7 +320,7 @@ export default function StepTwo({ step, onGenerateGame }: StepProps) {
               <button
                 type="button"
                 className={`rainbow-btn w-full`}
-                onClick={async () => navigate("/dashboard/games")}
+                onClick={() => generate && navigate("/dashboard/games")}
               >
                 Save Game
               </button>
