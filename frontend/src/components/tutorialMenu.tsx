@@ -1,5 +1,4 @@
 import step1 from "../assets/step1.gif";
-import step2 from "../assets/step2.gif";
 import step3 from "../assets/step3.gif";
 import step4 from "../assets/step4.gif";
 import step5 from "../assets/step5.gif";
