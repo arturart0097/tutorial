@@ -26,7 +26,7 @@ function DiscordCard() {
         <div>Talk with other GameGPT users in Discord</div>
         <div className="cta-wrap">
           <button className="btn-full white-btn cta" disabled>
-            <img src={discord_logo} className="discord-logo" />
+            <img src={discord_logo} className="discord-logo" style={{ width: "22px" }} />
             Join Discord
           </button>
         </div>
@@ -45,7 +45,7 @@ function WhitepaperCard() {
           game with GameGPT
         </div>
         <div className="cta-wrap">
-          <button className="btn-full white-btn cta h-[61px]" disabled>
+          <button className="btn-full white-btn cta" disabled>
             <i className="fa-solid fa-book"></i> &nbsp; Read
           </button>
         </div>
@@ -74,7 +74,7 @@ function IntroVideoCard() {
             allowFullScreen
           ></iframe> */}
         </div>
-        <button className="btn-full white-black-btn h-[61px]" disabled>
+        <button className="btn-full white-black-btn" disabled>
           Start tutorial
         </button>
       </div>

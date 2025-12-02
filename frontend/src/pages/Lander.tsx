@@ -37,10 +37,6 @@ function Lander() {
   const { ready, authenticated } = usePrivy();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!ready) return;
-
-    if (!authenticated) return;
-
     navigate("/dashboard");
   }, [authenticated]);
 

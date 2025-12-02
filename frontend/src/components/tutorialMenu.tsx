@@ -24,7 +24,7 @@ export const TutorialMenu = () => {
       </p>
 
       <video
-        key={step} // 🔥 важливо для коректного автоперезапуску
+        key={step}
         src={stepVideos[step]}
         autoPlay
         muted
