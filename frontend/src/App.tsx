@@ -21,18 +21,6 @@ function App() {
   return (
     <>
       <ThemeProvider>   
-        <PrivyProvider
-          appId={import.meta.env.VITE_PRIVY_APP_ID}
-          config={{
-            loginMethods: ["wallet"], //option to add twitter
-            supportedChains: [base],
-            defaultChain: base,
-            appearance: {
-              walletChainType: "ethereum-only",
-              walletList: ["metamask", "detected_ethereum_wallets"],
-            },
-          }}
-        >
           <GameBuilderContextProvider>
             <Toaster
               toastOptions={{
@@ -48,7 +36,6 @@ function App() {
               </Routes>
             </BrowserRouter>
           </GameBuilderContextProvider>
-        </PrivyProvider>
       </ThemeProvider>
     </>
   );

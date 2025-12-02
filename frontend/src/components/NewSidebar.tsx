@@ -107,11 +107,6 @@ export default function NewSidebar() {
   const { user } = usePrivy();
   const [walletAddress, setWalletAddress] = useState("");
   const navigate = useNavigate();
-  const { logout } = useLogout({
-    onSuccess: () => {
-      navigate("/");
-    },
-  });
   //   const location = useLocation(); for active link styling
 
   const { tutorial, step, advanceStep, showIntro } = useTutorial();
@@ -330,7 +325,6 @@ export default function NewSidebar() {
                   disabled
                   className="logout-link hover:underline text-xl"
                   style={{ color: "var(--text-primary)" }}
-                  onClick={logout}
                 >
                   Log Out
                 </button>
@@ -454,7 +448,6 @@ export default function NewSidebar() {
               <button
                 disabled
                 className="logout-link hover:underline"
-                onClick={logout}
               >
                 Log Out
               </button>
