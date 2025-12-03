@@ -357,10 +357,6 @@ export default function NewSidebar() {
         </>
       )}
 
-      {showIntro && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 pointer-events-auto w-50" />
-      )}
-
       <div
         id="topbar"
         className="flex items-center! justify-around mb-6! mx-1.5! px-1 border-b-2 hover:cursor-pointer"

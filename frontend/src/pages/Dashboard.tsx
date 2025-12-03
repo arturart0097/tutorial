@@ -189,7 +189,7 @@ function Dashboard() {
   };
 
   const renderIntroModal = () => {
-    if (!showIntro) return null;
+
     return (
       <>
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40" />
@@ -267,8 +267,8 @@ function Dashboard() {
         <div className="flex flex-col sticky top-0 h-screen! shrink-0 z-50">
           <NewSidebar />
         </div>
-        {renderIntroModal()}
-        {renderOverlay()}
+        {/* {renderIntroModal()}
+        {renderOverlay()} */}
         
 
         <div className="main">
