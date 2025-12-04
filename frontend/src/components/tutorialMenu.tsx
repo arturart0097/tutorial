@@ -50,7 +50,7 @@ export const TutorialMenu = () => {
   return (
     <div className="min-w-[300px] !mt-3 !px-3">
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
-      <p className="text-white/80 text-sm leading-relaxed">{body}</p>
+      <p className="text-white/80 text-md leading-relaxed">{body}</p>
 
       <video
         key={step}

@@ -111,7 +111,7 @@ export default function StepTwo({ step, onGenerateGame, generate }: StepProps) {
     return window.localStorage.getItem("tutorialStep4Advanced") === "true";
   });
 
-  const { setStep } = useGettingStartedSteps();
+  const { setStep, step: tutorialSteps } = useGettingStartedSteps();
 
   const navigate = useNavigate();
 
@@ -321,6 +321,7 @@ export default function StepTwo({ step, onGenerateGame, generate }: StepProps) {
                 type="button"
                 className={`rainbow-btn w-full`}
                 onClick={() => generate && navigate("/dashboard/games")}
+                disabled={tutorialSteps < 6}
               >
                 Save Game
               </button>
