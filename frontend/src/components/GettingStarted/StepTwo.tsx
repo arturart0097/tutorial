@@ -291,7 +291,7 @@ export default function StepTwo({ step, onGenerateGame, generate }: StepProps) {
           <div className="flex flex-col items-center justify-center mt-5! gap-5">
             <button
               className={`white-black-btn btn-full ${
-                !tutorial && tutorialStep === 7
+                tutorialSteps === 3
                   ? "animate-pulse ring-2 !ring-fuchsia-400/70 !shadow-[0_0_28px_rgba(217,70,239,0.55)]"
                   : ""
               }`}
@@ -310,6 +310,7 @@ export default function StepTwo({ step, onGenerateGame, generate }: StepProps) {
                 setStep(4);
               }}
               type="button"
+              disabled={tutorialSteps >= 4}
             >
               Generate Game
             </button>

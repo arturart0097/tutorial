@@ -51,6 +51,7 @@ type GameBuilderContext = {
   initialGameAssetMap: Record<string, File | string>;
   gameAssetMap: Record<string, File | string>;
   chatLock: boolean;
+  isCodeGenerating: boolean;
   gameSDKChecklist: GameSDKChecklist;
   gameThumbnail: File | string;
   gamePreview: File | string;
@@ -97,6 +98,7 @@ const GameBuilder = createContext<GameBuilderContext>({
   gameAssetMap: {},
   initialGameAssetMap: {},
   chatLock: true,
+  isCodeGenerating: false,
   gameSDKChecklist: {
     ready: {
       completed: false,
@@ -187,6 +189,7 @@ export const GameBuilderContextProvider: React.FC<{
     Record<string, File | string>
   >({});
   const [chatLock, setChatLock] = useState<boolean>(true);
+  const [isCodeGenerating, setIsCodeGenerating] = useState<boolean>(false);
   const [userWallet, setUserWallet] = useState("");
   const [gameSDKChecklist, setGameSDKChecklist] = useState({
     ready: {
@@ -373,6 +376,9 @@ export const GameBuilderContextProvider: React.FC<{
   };
 
   const showCodegenTooltip = () => {
+    // Block tab switching during code generation animation
+    setIsCodeGenerating(true);
+    
     // Show a 15s loading toast that automatically turns into success
     toast.loading("Generating Game Code...", {
       id: "codegen-tooltip",
@@ -384,6 +390,8 @@ export const GameBuilderContextProvider: React.FC<{
         toast.success("Game code generated!", {
           id: "codegen-tooltip",
         });
+        // Unblock tab switching after animation completes
+        setIsCodeGenerating(false);
       }, 15000);
     }
   };
@@ -522,6 +530,7 @@ export const GameBuilderContextProvider: React.FC<{
         gameName,
         gameModel,
         chatLock,
+        isCodeGenerating,
         gameAssetMap,
         initialGameAssetMap,
         gameSDKChecklist,

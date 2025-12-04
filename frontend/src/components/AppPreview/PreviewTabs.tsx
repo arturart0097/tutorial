@@ -1,4 +1,5 @@
 import { useGettingStartedSteps } from "../../contexts/GettingStartedStepsContext";
+import { useGameBuilder } from "../../contexts/GameBuilderContext";
 
 interface PreviewTabProps {
   label: string;
@@ -17,6 +18,7 @@ const PreviewTab = ({
 }: PreviewTabProps) => {
   const isActive = activeTab === index;
   const { step: stepTutorial, setStep } = useGettingStartedSteps();
+  const { isCodeGenerating } = useGameBuilder();
 
   return (
     <button
@@ -27,7 +29,7 @@ const PreviewTab = ({
       }}
       className={`preview-tab ${isActive ? "active" : ""}`}
       aria-pressed={isActive}
-      disabled={stepTutorial < 4}
+      disabled={stepTutorial < 4 || isCodeGenerating}
     >
       {label}
     </button>

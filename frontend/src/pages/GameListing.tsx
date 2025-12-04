@@ -201,7 +201,7 @@ function GameListing() {
             <button
               type="button"
               className={`white-black-btn btn-full ${
-                (!tutorial && step === 3) || step === 2
+                true
                   ? "ring-2 !ring-fuchsia-400/70 !shadow-[0_0_28px_rgba(217,70,239,0.55)] animate-pulse"
                   : ""
               }`}

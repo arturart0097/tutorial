@@ -78,7 +78,8 @@ interface ChatBoxProps {
 }
 
 export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
-  const { iterateGameStream, saveGame, chatLock } = useGameBuilder();
+  const { iterateGameStream, saveGame, chatLock, showCodegenTooltip } =
+    useGameBuilder();
   const [chatInteracted, setChatInteracted] = useState(false);
   const targetChatText = "Change background color to gradient blue";
   const [message, setMessage] = useState<string>("");
@@ -92,6 +93,7 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
 
   const handleSend = async () => {
     if (!isChatComplete) return;
+    showCodegenTooltip();
     setStep(6);
     setRegenerate(true);
   };
@@ -157,7 +159,7 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
         }}
         disabled={step < 5}
       />
-      <div className="pointer-events-none absolute inset-x-0 bottom-23 !px-6">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[115px] !px-6">
         <div className="w-full h-full whitespace-pre-wrap break-words overflow-hidden text-sm leading-6 font-mono text-zinc-500/70">
           {targetChatText.split("").map((char, index) => {
             const isTyped = index < message.length;
@@ -174,7 +176,7 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
                     : "text-gray-400/50"
                 }
               >
-                {char}
+                {step > 4 && char}
               </span>
             );
           })}

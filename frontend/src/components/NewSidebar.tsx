@@ -427,11 +427,11 @@ export default function NewSidebar() {
             >
               {/* <FeedbackButton /> */}
             </div>
-            <div
+            {/* <div
               className={`flex justify-start ml-4! ${fadeIn} delay-500 ${pop}`}
             >
               <ThemeToggle />
-            </div>
+            </div> */}
           </div>
 
           <div

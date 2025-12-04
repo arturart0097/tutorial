@@ -43,7 +43,7 @@ const StepNav = ({ step, setStep }: NavProps) => {
     : "";
 
   return (
-    <div className="flex absolute bottom-0 inset-x-0 z-50 justify-between items-center">
+    <div className="flex absolute bottom-5 inset-x-0 z-50 justify-between items-center">
       <div className={`${leftStyle}`}>
         <ThemeButton
           hover="hover:cursor-default"
@@ -75,7 +75,7 @@ const StepNav = ({ step, setStep }: NavProps) => {
 export default function Steps({ onGenerateGame, generate }: { onGenerateGame: () => void, generate: boolean }) {
   const [step, setStep] = useState<number>(1);
   return (
-    <div className="flex relative flex-col w-full h-[90vh] justify-between [font-family:'Tachyon_W00_Light'] overflow-y-auto!">
+    <div className="flex relative flex-col w-full h-[92.5vh] justify-between [font-family:'Tachyon_W00_Light'] overflow-y-auto!">
       <StepOne step={step} setStep={setStep} />
       <StepTwo step={step} onGenerateGame={onGenerateGame} generate={generate} />
       <StepThree step={step} />

@@ -58,7 +58,7 @@ export const TutorialMenu = () => {
         autoPlay
         muted
         loop
-        style={{ width: "100%", maxWidth: "600px" }}
+        style={{ width: "100%", maxWidth: "600px", border: "2px solid #ccc5", borderRadius: 10 }}
       />
     </div>
   );

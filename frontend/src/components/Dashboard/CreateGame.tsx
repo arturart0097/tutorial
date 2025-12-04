@@ -35,7 +35,7 @@ export default function CreateGame() {
   })();
 
   return (
-    <div className="flex flex-col w-full bg-blue-800/10 p-4!">
+    <div className="flex flex-col w-full bg-blue-800/10 p-2!">
       <ul className="flex justify-between font-semibold text-xl [font-family:'Tachyon_W00_Light'] text-zinc-300! border-b border-zinc-600 pb-[15px]! mb-2!">
         <li>
           Dashboard &gt;{" "}

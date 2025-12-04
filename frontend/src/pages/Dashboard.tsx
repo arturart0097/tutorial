@@ -278,14 +278,14 @@ function Dashboard() {
         </div>
         <section className="relative flex flex-col h-screen! z-50 w-[730px]! px-6 py-8">
           <div
-            className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-fuchsia-500/25 via-blue-500/20 to-indigo-500/30 blur-2xl opacity-80 pointer-events-none"
+            className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/25 via-blue-500/20 to-indigo-500/30 blur-2xl opacity-80 pointer-events-none"
             aria-hidden="true"
           />
           <div
-            className="absolute inset-0 rounded-[36px] border border-white/15 bg-black/60 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
+            className="absolute inset-0 border border-white/15 bg-black/60 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
             aria-hidden="true"
           />
-          <div className="relative flex flex-col h-full rounded-[28px] border border-white/5 bg-white/5 shadow-inner overflow-hidden">
+          <div className="relative flex flex-col h-full border border-white/5 bg-white/5 shadow-inner overflow-hidden">
             <div className="flex flex-col gap-2 px-8 py-6 border-b border-white/5 bg-gradient-to-r from-white/5 to-transparent">
               <h2 className="text-2xl font-semibold text-white drop-shadow !py-3">
                 Tutorial

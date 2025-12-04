@@ -241,7 +241,7 @@ export const StepsProgressCard = () => {
           >
             {/* Step Number/Icon */}
             <div
-              className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${
+              className={`flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${
                 step.active
                   ? "bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white shadow-lg shadow-fuchsia-500/50"
                   : step.completed
