@@ -15,6 +15,7 @@ import "../../sass/AppPreview.scss";
 import { DEFAULT_CODE } from "../../assets/MOCK/codeMock";
 import { REGENERATE_CODE } from "../../assets/MOCK/codeMock";
 import { useGettingStartedSteps } from "../../contexts/GettingStartedStepsContext";
+import { ChatBoxFloat } from "../Chat";
 
 interface GameFrameWindow extends Window {
   GameGPTSDK: InstanceType<typeof GameGPTSDK>;
@@ -23,7 +24,12 @@ interface GameFrameWindow extends Window {
   ASSETS_LOADED: boolean;
 }
 
-export default function GamePreview({ generate }) {
+interface GamePreviewProps {
+  generate: boolean;
+  setActiveTab?: (tab: number) => void;
+}
+
+export default function GamePreview({ generate, setActiveTab }: GamePreviewProps) {
   const {
     gameCode,
     gameAssetMap,
@@ -37,6 +43,7 @@ export default function GamePreview({ generate }) {
   const sdkLoaded = useRef(false);
   const { wallets } = useWallets();
   const { regenerate } = useGettingStartedSteps();
+  const { setGameCode, createGameStream, gameId } = useGameBuilder();
 
   const onGameWindowReload = () => {
     sdkLoaded.current = false;
@@ -231,11 +238,12 @@ export default function GamePreview({ generate }) {
           id="gameCanvas"
           ref={gameIFrameRef}
           srcDoc={regenerate ? REGENERATE_CODE : DEFAULT_CODE}
-          className="flex w-full! h-140"
+          className="flex w-full! h-137"
           sandbox="allow-scripts allow-same-origin"
           title="Game Preview"
         />
       </div>
+      <ChatBoxFloat gameId={gameId} setGameCode={setGameCode} setActiveTab={setActiveTab} />
     </div>
   );
 }

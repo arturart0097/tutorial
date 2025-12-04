@@ -75,9 +75,10 @@ const Message = ({ author, content }: MessageProps) => {
 interface ChatBoxProps {
   gameId: number;
   setGameCode: React.Dispatch<React.SetStateAction<string>>;
+  setActiveTab?: (tab: number) => void;
 }
 
-export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
+export const ChatBoxFloat = ({ gameId, setActiveTab }: ChatBoxProps) => {
   const { iterateGameStream, saveGame, chatLock, showCodegenTooltip } =
     useGameBuilder();
   const [chatInteracted, setChatInteracted] = useState(false);
@@ -96,6 +97,10 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
     showCodegenTooltip();
     setStep(6);
     setRegenerate(true);
+    // Switch to Code tab (tab 1) when Send is clicked
+    if (setActiveTab) {
+      setActiveTab(1);
+    }
   };
 
   const { step } = useGettingStartedSteps();

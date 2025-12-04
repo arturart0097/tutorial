@@ -111,7 +111,7 @@ function AppPreview({ generate, codeAnimationKey }: AppPreviewProps) {
         </div>
 
         <div className={activeTab === 2 ? "block w-full" : "hidden w-full"}>
-          <GamePreview generate={generate} />
+          <GamePreview generate={generate} setActiveTab={setActiveTab} />
         </div>
 
         <div className={activeTab === 3 ? "block w-full" : "hidden w-full"}>
