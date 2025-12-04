@@ -189,7 +189,6 @@ function Dashboard() {
   };
 
   const renderIntroModal = () => {
-
     return (
       <>
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40" />
@@ -269,7 +268,6 @@ function Dashboard() {
         </div>
         {/* {renderIntroModal()}
         {renderOverlay()} */}
-        
 
         <div className="main">
           <Routes>
@@ -293,14 +291,20 @@ function Dashboard() {
                 Tutorial
               </h2>
             </div>
-            <div className="flex-1 px-6 py-6 flex flex-col gap-6 overflow-hidden">
+            <div className="flex-1 !px-1 flex flex-col overflow-hidden">
               <div className="relative flex-1 rounded-2xl bg-black/40 border border-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
                 <div className="absolute inset-x-10 top-2 h-[2px] bg-gradient-to-r from-fuchsia-400 via-purple-300 to-blue-300 blur-sm opacity-70 pointer-events-none" />
                 <div className="relative h-full px-4 py-6">
                   <TutorialMenu />
                 </div>
               </div>
-              <div>
+              <div
+                className="overflow-y-auto"
+                style={{
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "#444 #1e1e1e",
+                }}
+              >
                 <StepsProgressCard />
               </div>
             </div>

@@ -92,7 +92,7 @@ export default function Preview() {
         <IntroVideoCard />
         <AnnoucementCard />
       </CardRow>
-      <br />
+      {/* <br />
       <hr />
 
       <div className="w-full !pl-10 flex">
@@ -115,7 +115,7 @@ export default function Preview() {
       <div className="w-full !pl-10 flex">
         <h2>Activity / Achievements</h2>
       </div>
-      <hr />
+      <hr /> */}
     </div>
   );
 }

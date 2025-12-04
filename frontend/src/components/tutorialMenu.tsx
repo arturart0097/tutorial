@@ -15,12 +15,12 @@ const stepVideos = {
 
 const stepDescriptions: Record<number, { title: string; body: string }> = {
   1: {
-    title: "Step 1 · Name & Describe",
-    body: "Give your game a clear title and draft a short description of the experience you want to build. This helps the LLM understand your creative direction from the very beginning.",
+    title: "Step 1 · Navigate to My Games",
+    body: "Click on 'My Games' in the sidebar to view your existing games. If you don't have any games yet, you can create a new one by clicking the 'New Game' button.",
   },
   2: {
-    title: "Step 2 · Enhance Your Prompt",
-    body: "Use the Enhance action to expand your idea into a structured prompt that’s ready for code generation. Review the output and adjust any details you want refined.",
+    title: "Step 2 · Name & Describe & Enhance Your Prompt",
+    body: "Give your game a clear title and draft a short description of the experience you want to build. This helps the LLM understand your creative direction from the very beginning. Use the Enhance action to expand your idea into a structured prompt that’s ready for code generation. Review the output and adjust any details you want refined.",
   },
   3: {
     title: "Step 3 · Generate Code",
@@ -42,11 +42,10 @@ const stepDescriptions: Record<number, { title: string; body: string }> = {
 
 export const TutorialMenu = () => {
   const { step } = useGettingStartedSteps();
-  const { title, body } =
-    stepDescriptions[step] ?? {
-      title: "Keep Going!",
-      body: "Follow the guided steps to bring your idea to life. Each milestone unlocks new tooling in the builder.",
-    };
+  const { title, body } = stepDescriptions[step] ?? {
+    title: "Keep Going!",
+    body: "Follow the guided steps to bring your idea to life. Each milestone unlocks new tooling in the builder.",
+  };
 
   return (
     <div className="min-w-[300px] !mt-3 !px-3">
@@ -59,7 +58,7 @@ export const TutorialMenu = () => {
         autoPlay
         muted
         loop
-        style={{ width: "100%", maxWidth: "600px", marginTop: "30px" }}
+        style={{ width: "100%", maxWidth: "600px" }}
       />
     </div>
   );

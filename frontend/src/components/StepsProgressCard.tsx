@@ -198,7 +198,7 @@ export const StepsProgressCard = () => {
   if (steps.length === 0) return null;
 
   return (
-    <div className="relative flex flex-col rounded-2xl border border-white/10 bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl p-6 shadow-xl">
+    <div className="relative !px-4 flex flex-col rounded-2xl border border-white/10 bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl !py-2 shadow-xl">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex flex-col">
@@ -226,7 +226,7 @@ export const StepsProgressCard = () => {
       </div>
 
       {/* Steps List */}
-      <div className="flex flex-col gap-3 max-h-[400px] overflow-y-auto pr-2">
+      <div className="flex flex-col gap-3 max-h-[400px] !pt-4 pr-2">
         {steps.map((step, index) => (
           <div
             key={step.id}

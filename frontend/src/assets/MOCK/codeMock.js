@@ -17,7 +17,7 @@ export const DEFAULT_CODE = `<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at top, #1a2a6c, #000);
+      background: #000;
       color: #fff;
     }
 
