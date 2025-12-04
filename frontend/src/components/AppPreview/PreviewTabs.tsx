@@ -27,6 +27,7 @@ const PreviewTab = ({
       }}
       className={`preview-tab ${isActive ? "active" : ""}`}
       aria-pressed={isActive}
+      disabled={stepTutorial < 4}
     >
       {label}
     </button>

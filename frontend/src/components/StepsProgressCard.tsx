@@ -126,7 +126,7 @@ export const StepsProgressCard = () => {
         gameBuilder.currentGamePrompt.length > 100;
       const hasGameCode = gameBuilder.gameCode !== "";
       const formatSubtask = (label: string, done: boolean) =>
-        `[${done ? "x" : " "}] ${label}`;
+        `${done ? "✅" : "❌"} ${label}`;
 
       const gsSteps: StepInfo[] = [
         {
@@ -153,15 +153,14 @@ export const StepsProgressCard = () => {
         {
           id: 12,
           title: "Preview Your Game",
-          description:
-            "Use the Preview tab to play-test and visually inspect your game",
+          description: "Use the Preview tab to play and inspect your game",
           completed: gettingStartedStep > 4,
           active: gettingStartedStep === 4,
           unlocked: gettingStartedStep >= 4 || hasGameCode,
         },
         {
           id: 13,
-          title: "Chat & Iterate",
+          title: "Improve your codebase",
           description: "Chat with your codebase to make improvements",
           completed: gettingStartedStep > 5,
           active: gettingStartedStep === 5,
@@ -230,7 +229,7 @@ export const StepsProgressCard = () => {
         {steps.map((step, index) => (
           <div
             key={step.id}
-            className={`relative flex items-start gap-4 p-4 rounded-xl border transition-all duration-300 ${
+            className={`relative flex items-start gap-4 !p-1 rounded-xl border transition-all duration-300 ${
               step.active
                 ? "border-fuchsia-400/50 bg-fuchsia-500/10 shadow-lg shadow-fuchsia-500/20"
                 : step.completed
@@ -267,7 +266,7 @@ export const StepsProgressCard = () => {
                   />
                 </svg>
               ) : (
-                index + 1
+                index + 2
               )}
             </div>
 

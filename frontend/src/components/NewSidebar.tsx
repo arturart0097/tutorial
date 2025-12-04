@@ -13,6 +13,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useTutorial } from "../hooks/useTutorial";
 import { useMobile } from "../hooks/useMobile";
 import { useTheme } from "../contexts/ThemeContext";
+import { useGettingStartedSteps } from "../contexts/GettingStartedStepsContext";
 
 interface SidebarLinkProps {
   to: string;
@@ -339,6 +340,8 @@ export default function NewSidebar() {
     );
   }
 
+  const [highlight, setHighlight] = useState(false);
+
   return (
     <div
       id="sidebar"
@@ -393,12 +396,14 @@ export default function NewSidebar() {
                 to={disableDashboardLink ? "" : "/dashboard"}
                 label="Dashboard"
               />
-              <SidebarLink
-                to="/dashboard/games"
-                label="My Games"
-                highlight={!tutorial && step === 1}
-                isTutorialText={"Натисніть "}
-              />
+              <div onClick={() => setHighlight(true)}>
+                <SidebarLink
+                  to="/dashboard/games"
+                  label="My Games"
+                  highlight={!highlight}
+                  isTutorialText={"Натисніть "}
+                />
+              </div>
             </div>
             <div
               id="socials"
@@ -441,10 +446,7 @@ export default function NewSidebar() {
             <img src={profile_icon} className="w-8 h-8 rounded-full" />
             <div>
               <div>{walletAddress}</div>
-              <button
-                disabled
-                className="logout-link hover:underline"
-              >
+              <button disabled className="logout-link hover:underline">
                 Log Out
               </button>
             </div>

@@ -80,7 +80,7 @@ interface ChatBoxProps {
 export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
   const { iterateGameStream, saveGame, chatLock } = useGameBuilder();
   const [chatInteracted, setChatInteracted] = useState(false);
-  const targetChatText = "Change background color";
+  const targetChatText = "Change background color to gradient blue";
   const [message, setMessage] = useState<string>("");
   const focusStyle =
     "focus:ring-2! focus:ring-fuchsia-300/40! focus:border-transparent!";
@@ -95,6 +95,8 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
     setStep(6);
     setRegenerate(true);
   };
+
+  const { step } = useGettingStartedSteps();
 
   return (
     <div className="flex items-end gap-3 w-full h-28">
@@ -153,6 +155,7 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
           // This is handled in onKeyDown, but keeping for safety
           setChatInteracted(true);
         }}
+        disabled={step < 5}
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-23 !px-6">
         <div className="w-full h-full whitespace-pre-wrap break-words overflow-hidden text-sm leading-6 font-mono text-zinc-500/70">
@@ -185,7 +188,7 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
           radius="rounded-lg!"
           padding="py-2! px-4!"
           onClick={handleSend}
-          disabled={!isChatComplete}
+          disabled={!isChatComplete || step < 5}
         >
           Send
         </ThemeButton>
@@ -198,7 +201,7 @@ export const ChatBoxFloat = ({ gameId }: ChatBoxProps) => {
             saveGame();
             navigate("/dashboard/games");
           }}
-          disabled={false}
+          disabled={step < 6}
         >
           Save
         </ThemeButton>
