@@ -266,7 +266,7 @@ export const StepsProgressCard = () => {
                   />
                 </svg>
               ) : (
-                index + 2
+                index + 1
               )}
             </div>
 

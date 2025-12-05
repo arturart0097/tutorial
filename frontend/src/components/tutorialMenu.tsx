@@ -15,27 +15,27 @@ const stepVideos = {
 
 const stepDescriptions: Record<number, { title: string; body: string }> = {
   1: {
-    title: "Step 1 · Navigate to My Games",
-    body: "Click on 'My Games' in the sidebar to view your existing games. If you don't have any games yet, you can create a new one by clicking the 'New Game' button.",
+    title: " · Navigate to My Games",
+    body: "Click “My Games” in the sidebar, then click “New Game” to create a new game.",
   },
   2: {
-    title: "Step 2 · Name & Describe & Enhance Your Prompt",
+    title: "Step 1 · Name & Describe & Enhance Your Prompt",
     body: "Give your game a clear title and draft a short description of the experience you want to build. This helps the LLM understand your creative direction from the very beginning. Use the Enhance action to expand your idea into a structured prompt that’s ready for code generation. Review the output and adjust any details you want refined.",
   },
   3: {
-    title: "Step 3 · Generate Code",
+    title: "Step 2 · Generate Code",
     body: "Kick off code generation and watch the editor animate as the project scaffold is created. Stay on this step until the base version of your game is ready.",
   },
   4: {
-    title: "Step 4 · Preview & Test",
+    title: "Step 3 · Preview & Test",
     body: "Open the Preview tab and interact with the game. Make sure the core mechanics, visuals, and overall vibe feel right before moving on.",
   },
   5: {
-    title: "Step 5 · Chat & Iterate",
+    title: "Step 4 · Chat & Iterate",
     body: "Use the chat panel to request tweaks, new features, or polish. Each message updates the code so you can iterate quickly without leaving the builder.",
   },
   6: {
-    title: "Step 6 · Review & Save",
+    title: "Step 5 · Review & Save",
     body: "Once you’re happy, save the project to your library. You can always return later to iterate further or integrate assets before publishing.",
   },
 };
@@ -58,7 +58,12 @@ export const TutorialMenu = () => {
         autoPlay
         muted
         loop
-        style={{ width: "100%", maxWidth: "600px", border: "2px solid #ccc5", borderRadius: 10 }}
+        style={{
+          width: "100%",
+          maxWidth: "600px",
+          border: "2px solid #ccc5",
+          borderRadius: 10,
+        }}
       />
     </div>
   );
